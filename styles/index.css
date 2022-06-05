@@ -34,6 +34,10 @@ body > div {
     min-height: 100vh;
 }
 
+footer {
+    top: 100vh
+}
+
 /* NavBar */
 .b-grayLow {
     border-bottom: 1px solid #26465325;
