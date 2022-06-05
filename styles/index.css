@@ -1,0 +1,103 @@
+/* purgecss start ignore */
+@tailwind base;
+@tailwind components;
+/* purgecss end ignore */
+@tailwind utilities;
+
+/* Global */
+@font-face {
+    font-family: 'jf-openhuninn';
+    src: url(/fonts/jf-openhuninn/jf-openhuninn-1.1.woff2) format('woff2'),
+        url(/fonts/jf-openhuninn/jf-openhuninn-1.1.woff) format('woff'),
+        url(/fonts/jf-openhuninn/jf-openhuninn-1.1.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'GenJyuuGothic';
+    src: url(/fonts/genjyuugothic/GenJyuuGothic-Normal.woff2) format('woff2') font-weight-normal,
+        url(/fonts/genjyuugothic/GenJyuuGothic-ExtraLight.woff2) format('woff2') font-weight-extralight,
+        url(/fonts/genjyuugothic/GenJyuuGothic-Light.woff2) format('woff2') font-weight-light,
+        url(/fonts/genjyuugothic/GenJyuuGothic-Medium.woff2) format('woff2') font-weight-medium,
+        url(/fonts/genjyuugothic/GenJyuuGothic-Heavy.woff2) format('woff2') font-weight-heavy,
+        url(/fonts/genjyuugothic/GenJyuuGothic-Bold.woff2) format('woff2') font-weight-bold;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+}
+
+body > div {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* NavBar */
+.b-grayLow {
+    border-bottom: 1px solid #26465325;
+}
+
+.Follow-Plugin>svg {
+    margin: auto;
+    animation: rotate 1.4s ease infinite;
+    animation-play-state: paused;
+}
+
+.Follow-Plugin:hover {
+    transform: scale(1);
+    transition: 0.3s;
+}
+
+.Follow-Plugin:hover>svg {
+    animation-play-state: running;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.fadeIn {
+    animation: fadeIn 250ms ease backwards;
+}
+
+.fadeOut {
+    animation: fadeIn 250ms ease forwards reverse;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: scale(.1) translateX(-150px) translateY(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1) translateX(0px) translateY(0px);
+        opacity: 1;
+    }
+}
+
+.dropIn {
+    animation: dropIn 150ms ease backwards;
+}
+
+.dropOut {
+    animation: dropIn 150ms ease forwards reverse;
+}
+
+@keyframes dropIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
