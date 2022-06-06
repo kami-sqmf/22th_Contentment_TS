@@ -13,7 +13,8 @@
     "@fortawesome/react-fontawesome": "^0.1.18",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.11",
-    "firebase": "^9.8.2",
+    "dotenv": "^16.0.1",
+    "firebase-admin": "^10.2.0",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
