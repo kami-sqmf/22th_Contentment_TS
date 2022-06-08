@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { Navs } from './globals';
 
-function BreadCrumb({ className, current }) {
+function BreadCrumb({ className, current, Right} : {className: string; current: string; Right?: JSX.Element}) {
     const path = current.split("/").filter(Boolean)
     let location: Array<any> = [Navs.find(obj => obj.link.includes(path[0]))]
     if (path.length > 1) {
@@ -12,7 +12,7 @@ function BreadCrumb({ className, current }) {
         }
     }
     return (
-        <div className={`${className} flex flex-row justify-between mx-8 sm:justify-around md:justify-between xl:justify-around lg:mx-8`}>
+        <div className={`${className} flex items-start justify-around md:justify-between xl:mx-48 lg:mx-16 md:mx-8`}>
             <div className={`flex flex-row justify-start`}>
                 {location.map((data, index) => (
                     <div className={`${index != location.length - 1 ? "hidden" : "flex" } md:flex flex-row items-center`}>
@@ -27,7 +27,8 @@ function BreadCrumb({ className, current }) {
                 ))}
             </div>
             <div className="invisible"></div>
-            <div className="invisible"></div>
+            {Right ? Right : <div className="invisible"></div>}
+            
         </div>
     )
 }

@@ -103,7 +103,7 @@ function Navbar({ Current }: { Current: string }) {
   return (
     <nav className="relative bg-white-light">
       <div className='w-screen mx-auto b-grayLow'>
-        <div className='flex justify-around items-center py-2 xl:mx-32 lg:mx-8'>
+        <div className='flex items-center justify-around md:justify-between xl:mx-48 lg:mx-16 md:mx-8 py-2'>
           {/* Left */}
           <div className="hidden md:inline-flex">
             <Link href="/">
