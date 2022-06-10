@@ -42,8 +42,8 @@ const IndexPage = () => (
             icon="v1"
             thumbnail="weikai.jpg" />
         <Navbar Current="/members" />
-        <BreadCrumb current="/members" className="my-8" />
-        <div className='flex items-start justify-around md:justify-between xl:mx-48 lg:mx-16 md:mx-8'>
+        <BreadCrumb current="/members" className="mt-8" />
+        <div className='flex items-start justify-around md:justify-between min-h-max my-8 xl:mx-48 lg:mx-16 md:mx-8'>
             <div className='flex flex-col md:flex-row py-8 px-12 ring-blue ring-2 rounded-lg shadow-sm bg-white-light'>
                 <Choice link={link.teachers} text={text.teachers} image={image.teachers} />
                 <Choice link={link.classmates} text={text.classmates} image={image.classmates} />

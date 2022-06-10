@@ -6,7 +6,7 @@ import { FollowInstaPlugin } from './instagram-follow-plugin';
 
 function Footer() {
   return (
-    <footer className='w-screen sticky top-[100vh] bg-white-light'>
+    <footer className='w-screen sticky top-[100vh] bg-white-light z-50'>
       <div className='flex flex-col md:flex-row justify-around items-center pt-8 pb-4 xl:mx-32 lg:mx-8'>
         {/* Left */}
         <div>

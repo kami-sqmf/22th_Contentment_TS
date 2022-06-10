@@ -11,7 +11,7 @@ const IndexPage = () => (
       icon="v1"
       thumbnail="weikai.jpg" />
     <Navbar Current="/members/classmates/transfered" />
-    <BreadCrumb current="/members/classmates/transfered" className="my-8" />
+    <BreadCrumb current="/members/classmates/transfered" className="mt-8" />
     <div>
       ABCD
     </div>
