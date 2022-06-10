@@ -3,7 +3,7 @@ import { InstaProfile } from "./globals"
 
 export const FollowInstaPlugin = ({ color } : { color: "insta" | "blue-light" }) => {
     return (
-        <Link href={`https://www.instagram.com/${InstaProfile}/`}>
+        <Link href={`https://www.instagram.com/${InstaProfile}/`} className="text-insta fill-insta text-blue-light fill-blue-light border-blue-light border-insta">
             <div className={`hidden md:inline-flex Follow-Plugin cursor-pointer h-12 w-auto text-${color} fill-${color} border-2 rounded-2xl border-solid border-${color} p-2 scale-90`}>
                 <svg
                     className='mx-auto'
