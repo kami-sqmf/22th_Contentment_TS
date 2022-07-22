@@ -29,12 +29,12 @@ body {
     min-height: 100vh;
 }
 
-body > div {
+body>div {
     width: 100%;
     min-height: 100vh;
 }
 
-body > div > div {
+body>div>div {
     width: 100%;
     min-height: 100vh;
 }

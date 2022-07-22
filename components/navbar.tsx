@@ -122,7 +122,7 @@ function Navbar({ Current }: { Current: string }) {
                     }
                   </li>
                   {!nav.child ? "" :
-                    <div id={nav.nameEn} className='hidden absolute top-20 w-max p-4 bg-white-light z-50 rounded-lg ring-2 ring-blue ring-opacity-40'>
+                    <div id={nav.nameEn} className='hidden absolute top-20 w-max p-4 bg-white-light z-10 rounded-lg ring-2 ring-blue ring-opacity-40'>
                       <ul className='mx-auto'>
                         {nav.child.map((nav, index) => (
                           <li className='mt-1'>
@@ -188,7 +188,7 @@ function Navbar({ Current }: { Current: string }) {
         </div>
       </div>
       {/* Mobile Menu */}
-      <div id="nav-mobile" className='hidden z-50 top-0 m-6 rounded-lg ring-2 ring-blue ring-opacity-5 bg-white-light drop-shadow-2xl md:hidden'>
+      <div id="nav-mobile" className='hidden z-10 top-0 m-6 rounded-lg ring-2 ring-blue ring-opacity-5 bg-white-light drop-shadow-2xl md:hidden'>
         <ul className='mx-auto w-fit'>
           {Navs.map((nav, index) => (
             <li key={index} className={`p-3 ${Current.includes(nav.link) ? 'text-blue-light' : 'text-blue'}`}>
