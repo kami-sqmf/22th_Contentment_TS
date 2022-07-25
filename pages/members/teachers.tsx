@@ -35,17 +35,13 @@ const teachersPage = () => (
       thumbnail="weikai.jpg" />
     <Navbar Current="/members/teachers" />
     <BreadCrumb current="/members/teachers" className="mt-8" Right={<SessionSelect className="lg:invisible" />} ></BreadCrumb>
-    <div className='flex flex-col lg:flex-row items-center lg:items-start justify-start lg:justify-between my-8 xl:mx-48 lg:mx-16'>
-      <div className='flex flex-col justify-between h-max'>
-        <SessionSelect className="hidden lg:flex self-start" />
-        <FontAwesomeIcon icon={faAngleLeft} className="w-8 text-blue/80 self-center hidden lg:block" />
-      </div>
-      {/* 圖片與文字 */}
-      <div className='grid grid-col-12 grid-flow-row left-0 right-0 mx-auto max-w-fit mt-24 xl:ml-48 lg:ml-16 md:ml-8'>
-        <p className='col-start-1 col-span-3 row-start-2 row-span-1 text-6xl md:text-8xl text-blue/20'>{teacherInfo.nachnameEn}</p>
-        <img className="col-start-2 col-span-3 row-start-1 row-span-6 w-80" src={teacherInfo.image} ></img>
-        <p className='col-start-4 col-span-3 row-start-3 row-span-1 text-6xl md:text-8xl text-blue/20'>{teacherInfo.nameEn}</p>
-        <div className='col-start-6 col-auto row-start-2 row-auto flex flex-col z-50 my-8'>
+    <div className='flex flex-row justify-around md:justify-between items-center my-8 xl:mx-48 lg:mx-16 mx-4'>
+      <FontAwesomeIcon icon={faAngleLeft} className="w-8 text-blue/80 self-center" />
+      <div className='grid grid-cols-5 grid-rows-8 md:grid-cols-8 md:grid-rows-6 max-w-7xl'>
+        <p className='ml-4 md:ml-0 col-start-1 col-end-3 row-span-1 row-start-2 text-6xl md:text-8xl text-blue/20'>{teacherInfo.nachnameEn}</p>
+        <p className='ml-4 md:ml-0 col-start-3 col-end-5 row-span-1 row-start-3 md:col-start-4 text-6xl md:text-8xl text-blue/20'>{teacherInfo.nameEn}</p>
+        <img className="row-start-1 row-span-6 col-start-2 col-end-5 w-80" src={teacherInfo.image}></img>
+        <div className='col-start-1 col-span-5 row-start-5 row-span-4 md:col-start-5 md:col-end-8 md:row-start-2 md:row-end-6 flex flex-col mx-4'>
           <div className='flex flex-col'>
             <p className='text-lg text-blue-light'>{teacherInfo.subject}</p>
             <p className='text-4xl tracking-widest text-blue-light'>{teacherInfo.name}</p>
@@ -56,15 +52,15 @@ const teachersPage = () => (
             <p className='text-xl text-blue-light'>任職期間： {teacherInfo.time}</p>
           </div>
           <Link href={`mailto:${teacherInfo.mail}`}>
-            <div className='flex flex-row items-center px-4 py-2 mt-12 ring-2 ring-blue-light rounded-xl max-w-fit cursor-pointer'>
+            <div
+              className='flex flex-row items-center px-4 py-2 mt-12 ring-2 ring-blue-light rounded-xl max-w-fit cursor-pointer'>
               <FontAwesomeIcon icon={faEnvelope} className="h-7 mr-4 text-blue-light" />
               <p className='text-2xl text-blue-light'>聯絡老師</p>
             </div>
           </Link>
         </div>
       </div>
-      {/* 手機版定位圖片用 */}
-      <FontAwesomeIcon icon={faAngleRight} className="w-8 text-blue/80 self-center hidden lg:block" />
+      <FontAwesomeIcon icon={faAngleRight} className="w-8 text-blue/80 self-center" />
     </div>
     <Footer />
   </div >
