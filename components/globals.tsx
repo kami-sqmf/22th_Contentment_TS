@@ -12,4 +12,4 @@ export const InstaProfile = "s21_the_best";
 export const DiscordInviteCode = "DRUY4w56eJd"
 export const GithubRepo = "kami-sqmf/22th_Contentment"
 export const websiteMap = [{ name: "班級活動", url: "/album" }, { name: "班級成員", url: "/members" }, { name: "班級圖片", url: "https://drive.google.com/drive/folders/1wbB9I_MiKtDveHVjyNmSixH3f5_77DDH?usp=sharing" }, { name: "班級點歌系統", url: "/songs" }, { name: "課表與行事曆", url: "/calender" }]
-export const usefulLink = [{ name: "學校網頁", url: "https://www.tcsh.hlc.edu.tw/home" }, { name: "學校 Facebook", url: "https://www.facebook.com/1724270161215510" }, { name: "班聯會 IG", url: "https://www.instagram.com/22nd_tcca/" }, { name: "學系歷程平台", url: "https://epf.mlife.org.tw/Portal.do" }, { name: "互動ABC 線上版", url: "/api/youtube?search=LiveABC" }]
+export const usefulLink = [{ name: "學校網頁", url: "https://www.tcsh.hlc.edu.tw/home" }, { name: "學校 Facebook", url: "https://www.facebook.com/1724270161215510" }, { name: "學系歷程平台", url: "https://epf.mlife.org.tw/Portal.do" }, { name: "今日人間菩提", url: "/api/youtube?search=daai" }, { name: "互動ABC 線上版", url: "/api/youtube?search=LiveABC&month=7" }]

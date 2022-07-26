@@ -14,12 +14,37 @@
 
 @font-face {
     font-family: 'GenJyuuGothic';
-    src: url(/fonts/genjyuugothic/GenJyuuGothic-Normal.woff2) format('woff2') font-weight-normal,
-        url(/fonts/genjyuugothic/GenJyuuGothic-ExtraLight.woff2) format('woff2') font-weight-extralight,
-        url(/fonts/genjyuugothic/GenJyuuGothic-Light.woff2) format('woff2') font-weight-light,
-        url(/fonts/genjyuugothic/GenJyuuGothic-Medium.woff2) format('woff2') font-weight-medium,
-        url(/fonts/genjyuugothic/GenJyuuGothic-Heavy.woff2) format('woff2') font-weight-heavy,
-        url(/fonts/genjyuugothic/GenJyuuGothic-Bold.woff2) format('woff2') font-weight-bold;
+    font-weight: 200;
+    src: url(/fonts/genjyuugothic/GenJyuuGothicL-ExtraLight.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'GenJyuuGothic';
+    font-weight: 300;
+    src: url(/fonts/genjyuugothic/GenJyuuGothicL-Light.woff2) format('woff2');
+}
+@font-face {
+    font-family: 'GenJyuuGothic';
+    font-weight: 400;
+    src: url(/fonts/genjyuugothic/GenJyuuGothicL-Normal.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'GenJyuuGothic';
+    font-weight: 500;
+    src: url(/fonts/genjyuugothic/GenJyuuGothicL-Medium.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'GenJyuuGothic';
+    font-weight: 700;
+    src: url(/fonts/genjyuugothic/GenJyuuGothicL-Bold.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'GenJyuuGothic';
+    font-weight: 900;
+    src: url(/fonts/genjyuugothic/GenJyuuGothicL-Heavy.woff2) format('woff2');
 }
 
 body {
