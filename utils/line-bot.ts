@@ -1,3 +1,5 @@
+import { db } from "./firebaseConfig";
+
 const axios = require('axios').default;
 const cheerio = require('cheerio');
 
@@ -16,6 +18,8 @@ export default class LineBot {
           return this.messages(event);
         case 'postback':
           return this.postback(event);
+        case 'follow':
+          return this.follow(event);
         default:
           console.log(`收到的資料格式為 ${event.type}`);
           break;
@@ -56,6 +60,14 @@ export default class LineBot {
         ]);
       }
     }
+    if(e.message.type == "sticker"){
+      this.reply(e.replyToken, [
+        {
+          "type": "text",
+          "text": `幹嘛傳${e.message.keywords[Math.floor(Math.random() * e.message.keywords.length)]}給我？`
+        }
+      ])
+    }
     return e;
   }
   private postback(e) {
@@ -92,30 +104,56 @@ export default class LineBot {
     }
     return res;
   }
+  private async follow(e) {
+    if (e.source.type != "user") return "Not a User";
+    const data = await this.postData("GET", `https://api.line.me/v2/bot/profile/${e.source.userId}`)
+    db.collection('line').doc(data.userId).set({
+      id: data.userId,
+      name: data.displayName,
+      icon: data.pictureUrl,
+      followed: true
+    }, { merge: true });
+    this.reply(e.replyToken, [
+      {
+        type: 'sticker',
+        packageId: '6362',
+        stickerId: '11087925'
+      },
+      {
+        "type": "text",
+        "text": "😳 歡迎加入22屆知足班 Line班帳！ 😳\n這裡什麼也不能幹嘛！但你可以去 22th.kami.tw 去看看有什麼需要用到我的東西。"
+      }
+    ])
+  }
   public reply(replyToken, message) {
-    this.postData('https://api.line.me/v2/bot/message/reply', {
+    this.postData("POST", 'https://api.line.me/v2/bot/message/reply', {
       replyToken: replyToken,
       messages: message
     });
   }
   public push(target, message) {
-    this.postData('https://api.line.me/v2/bot/message/push', {
+    this.postData("POST", 'https://api.line.me/v2/bot/message/push', {
       to: target,
       messages: message
     });
   }
-  private postData(url, body) {
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${this.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    })
-      .then((data) => data.json())
-      .then((data) => (data == null ? console.log(data) : 0))
-      .catch((error) => console.error(error));
+  private async postData(method: "GET" | "POST" | "INSERT" | "PUT" | "UPDATE" | "DELETE", url, body?) {
+    try {
+      let data = {
+        method: method,
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+      body ? data["body"] = JSON.stringify(body) : 0
+      const res = await fetch(url, data)
+      const resJson = await res.json()
+      return resJson
+    } catch (err) {
+      console.log(err)
+      return err
+    }
   }
 }
 

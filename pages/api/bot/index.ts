@@ -14,7 +14,6 @@ const handler = (_req: NextApiRequest, res: NextApiResponse) => {
       const event = _req.body.events;
       console.log(event);
       const data = bot.event(event);
-      console.log(data);
     }
     res.status(200).send({ operation: 'success' });
   } catch (err: any) {
