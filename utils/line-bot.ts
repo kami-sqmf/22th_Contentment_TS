@@ -37,7 +37,6 @@ export default class LineBot {
         default:
           console.log(`收到的資料格式為 ${event.type}`);
           return await event;
-          break;
       }
     }
   }
@@ -312,16 +311,16 @@ export default class LineBot {
       })`q`
     }
     db.collection('line').doc(data.userId).set(setData, { merge: true });
-    this.reply(e.replyToken, message)
+    return this.reply(e.replyToken, message)
   }
   public reply(replyToken, message) {
-    this.postData("POST", '/message/reply', {
+    return this.postData("POST", '/message/reply', {
       replyToken: replyToken,
       messages: message
     });
   }
   public push(target, message) {
-    this.postData("POST", '/message/push', {
+    return this.postData("POST", '/message/push', {
       to: target,
       messages: message
     });
