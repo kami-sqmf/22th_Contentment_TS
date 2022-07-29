@@ -85,4 +85,5 @@ function getNextFriday() {
     return `${Friday.getFullYear()}${String(Friday.getMonth() + 1).padStart(2, '0')}${String(Friday.getDate()).padStart(2, '0')}`
 }
 
-export default handler
+export default handler;
+export { getNextFriday };

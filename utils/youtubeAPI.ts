@@ -15,6 +15,14 @@ export default class ytSearch {
         const data = await this.sendData("GET", "search", {"part": "id, snippet", "q": keyword, "type": "video", maxResults: 12})
         return data
     }
+    public async videoById(id: string){
+        const data = await this.sendData("GET", "videos", {"part": "snippet", "id": id})
+        return data
+    }
+    public async videoByIds(ids: Array<string>){
+        const data = await this.sendData("GET", "videos", {"part": "snippet", "id": ids.toString()})
+        return data
+    }
     public async channelByID(id){
         const data = await this.sendData("GET", "channels", {"part": "snippet", "id": id})
         return data
@@ -57,7 +65,7 @@ export default class ytSearch {
             url: url,
             baseURL: `https://www.googleapis.com/youtube/v3`,
         }
-        if(method = "GET"){
+        if(method == "GET"){
             sendReq = {
                 ...sendReq,
                 params: {
