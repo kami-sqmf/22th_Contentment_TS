@@ -15,11 +15,14 @@ const handler = (_req: NextApiRequest, res: NextApiResponse) => {
       console.log(event);
       bot.event(event).then(()=>{
         res.status(200).send({ operation: 'success' })
-      })  
+      }).catch((err)=>{
+        console.log(err)
+        res.status(500).json({ statusCode: 500, message: err.message })
+      })
     }
   } catch (err: any) {
     console.log(err)
-    res.status(500).json({ statusCode: 500, message: err.message })
+    res.status(500).json({ statusCode: 500, message: err })
   }
 }
 

@@ -1,4 +1,4 @@
-import { createWriteStream } from "fs";
+import { createReadStream, createWriteStream, ReadStream } from "fs";
 import { getNextFriday } from "../pages/api/youtube";
 import { bucket, db } from "./firebaseConfig";
 import ytSearch from "./youtubeAPI";
@@ -26,7 +26,7 @@ export default class LineBot {
 
   public async event(eventArray) {
     for (const event of eventArray) {
-      // console.log(event)
+      if(event.source.type == "group") return;
       switch (event.type) {
         case 'message':
           return await this.messages(event);
@@ -153,7 +153,6 @@ export default class LineBot {
         }
       ])
     }
-
     if (e.message.type == "image") {
       // Normal
       const text = `好澀喔！竟然傳你的照片給我？`
@@ -852,28 +851,27 @@ async function changeProfile(data, type) {
           Authorization: `Bearer 1jFiXttWeXRsbc7xYIFvPsUVpOBSYMB93HDXvDAgLmybJq4+bNdYCyZf7SZIMxd6+96yaq1Re3WonVKQAz5MfaoGTQphHAzeOcaNObWxGCNrcJ6/RLir9TOOnUqi5JLwmrfN0k4XSAmN1qNl4MyJzAdB04t89/1O/w1cDnyilFU=`,
         }
       });
-      const contentType = response.headers['content-type'];
-      let extension = ""
-      if (contentType == "image/jpeg") extension = "jpg"
-      if (contentType == "image/gif") extension = "gif"
-      if (contentType == "image/bmp") extension = "bmp"
-      const w = response.data.pipe(createWriteStream(`public/temp/${data.message.id}.${extension}`));
-      w.on('finish', async () => {
-        const upload = await bucket.upload(`public/temp/${data.message.id}.${extension}`, { destination: `students/${data.message.id}.${extension}` })
-        const link = await upload[0].getSignedUrl({
-          action: 'read',
-          expires: '03-09-2491'
-        })
-        const lineRef = db.collection("line").doc(data.source.userId)
-        const res = await lineRef.get()
-        const profile = await res.data().profile
-        profile.set({ avatar: link[0] }, { merge: true })
+      let extension: string;
+      if (response.headers['content-type'] == "image/jpeg") extension = "jpg"; if (response.headers['content-type'] == "image/gif") extension = "gif"; if (response.headers['content-type'] == "image/bmp") extension = "bmp"
+      const file = bucket.file(`students/0${data.message.id}.${extension}`);
+      const download = response.data as ReadStream
+      const result = new Promise((resolve, reject) => {
+        download.pipe(file.createWriteStream().on("finish", async ()=>{
+          file.makePublic();
+          const link = await file.publicUrl()
+          const lineRef = db.collection("line").doc(data.source.userId)
+          const res = await lineRef.get()
+          const profile = await res.data().profile
+          profile.set({ avatar: link }, { merge: true })
+          listener.delete(data.source.userId)
+          resolve([{
+            "type": "text",
+            "text": `已經更改您的照片`
+          }])
+        }))
+        setTimeout(()=>{reject()}, 7500);
       });
-      listener.delete(data.source.userId)
-      return [{
-        "type": "text",
-        "text": `已經更改您的照片`
-      }]
+      return result
     } catch (err) {
       return [{
         "type": "text",
