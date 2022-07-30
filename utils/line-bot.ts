@@ -24,6 +24,15 @@ export default class LineBot {
     this.token = token;
   }
 
+  public async temp(){
+      const ref = db.collection("students")
+      const snapshot = await ref.get();
+      snapshot.forEach(doc => {
+        ref.doc(doc.id).set({committe: [null, null, null]}, { merge: true})
+        ref.doc(doc.id).set({helper: [null, null, null]}, { merge: true})
+      });
+  }
+
   public async event(eventArray) {
     for (const event of eventArray) {
       if(event.source.type == "group") return;
@@ -307,7 +316,7 @@ export default class LineBot {
       message.push({
         "type": "text",
         "text": `根據我這個小雞雞的計算，您應該不是貴班的學生！如果您是的話請幫我告訴湯哥！`
-      })`q`
+      })
     }
     db.collection('line').doc(data.userId).set(setData, { merge: true });
     return this.reply(e.replyToken, message)
