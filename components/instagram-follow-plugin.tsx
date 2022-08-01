@@ -1,10 +1,10 @@
 import Link from "next/link"
 import { InstaProfile } from "./globals"
 
-export const FollowInstaPlugin = ({ color } : { color: "insta" | "blue-light" }) => {
+export const FollowInstaPlugin = ({ color, insta = InstaProfile, hide = "hidden"}) => {
     return (
-        <Link href={`https://www.instagram.com/${InstaProfile}/`} className="text-insta fill-insta text-blue-light fill-blue-light border-blue-light border-insta">
-            <div className={`hidden md:inline-flex Follow-Plugin cursor-pointer h-12 w-auto text-${color} fill-${color} border-2 rounded-2xl border-solid border-${color} p-2 scale-90`}>
+        <Link href={`https://www.instagram.com/${insta}/`} className="text-insta fill-insta text-blue-light fill-blue-light border-blue-light border-insta text-blue fill-blue border-blue">
+            <div className={`${hide} md:inline-flex Follow-Plugin cursor-pointer h-12 w-auto text-${color} fill-${color} border-2 rounded-2xl border-solid border-${color} p-2 scale-90`}>
                 <svg
                     className='mx-auto'
                     xmlns="http://www.w3.org/2000/svg"

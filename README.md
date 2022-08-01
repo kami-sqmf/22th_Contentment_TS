@@ -11,6 +11,12 @@
 
 ## 版本紀錄
 
+### PreAlpha 1.5
+新增 成員中學生頁面 以及臨時首頁
+
+### PreAlpha 1.4.5
+修正 Line API 非學生訊息錯誤
+
 ### PreAlpha 1.4.4
 修正 Line API 照片更改的問題
 

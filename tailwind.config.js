@@ -23,7 +23,10 @@ module.exports = {
       'purple': colors.violet,
       'yellow': colors.amber,
       'pink': colors.fuchsia,
-      'red': colors.red
+      'red': colors.red,
+      'stone': colors.stone,
+      'amber': colors.amber,
+      'indigo': colors.indigo
     },
     fontFamily: {
       sans: ['jf-openhuninn', 'GenJyuuGothic'],
@@ -43,7 +46,7 @@ module.exports = {
         '9': 'repeat(9, minmax(0, 1fr))',
         // Complex site-specific row configuration
         'layout': '200px minmax(900px, 1fr) 100px',
-      }
+      },
     }
   },
 }

@@ -1,7 +1,7 @@
 import { faHouse, faPeopleLine, faCameraRetro, faCalendarDays, faMusic, IconDefinition } from '@fortawesome/free-solid-svg-icons'
 export const Navs: Array<navs> = [
     { nameEn: 'Home', nameCh: '首頁', link: '/', emoji: faHouse },
-    { nameEn: 'Members', nameCh: '成員', link: '/members', emoji: faPeopleLine, child: [{ name: '老師 Teachers', link: '/members/teachers' }, { name: '同學 Classmates', link: '/members/classmates', child: [{ name: '01-09', link: '/members/classmates/0x' }, { name: '10-19', link: '/members/classmates/1x' }, { name: '20-29', link: '/members/classmates/2x' }, { name: '30-41', link: '/members/classmates/3x' }, { name: '知足靈堂', link: '/members/classmates/transfered' }] }, { name: '懿德爸媽', link: '/members/tzuyi', child: [{ name: '第一組', link: '/members/tzuyi/first' }, { name: '第二組', link: '/members/tzuyi/second' }, { name: '第三組', link: '/members/tzuyi/third' }] }] },
+    { nameEn: 'Members', nameCh: '成員', link: '/members', emoji: faPeopleLine, child: [{ name: '老師 Teachers', link: '/members/teachers' }, { name: '同學 Classmates', link: '/members/classmates' }, { name: '懿德爸媽', link: '/members/tzuyi', child: [{ name: '第一組', link: '/members/tzuyi/first' }, { name: '第二組', link: '/members/tzuyi/second' }, { name: '第三組', link: '/members/tzuyi/third' }] }] },
     { nameEn: 'Album', nameCh: '相簿', link: '/album', emoji: faCameraRetro },
     { nameEn: 'Schedule', nameCh: '行事曆', link: '/calender', emoji: faCalendarDays },
     { nameEn: 'Songs', nameCh: '歌單', link: '/songs', emoji: faMusic }

@@ -6,7 +6,7 @@ const text = {
   first: {
     title: "知足、團結、強大，文采飛揚。",
     subtitle: "這就是我們的高二知足",
-    image: "/index/home.jpg"
+    image: "/index/Home.jpg"
   }
 }
 
@@ -21,6 +21,7 @@ const IndexPage = () => (
     <div className="flex items-center justify-around xl:mx-48 lg:mx-16 md:mx-8 mt-8">
       <div itemID='first' className='flex flex-row justify-around'>
         <div className='font-["GenJyuuGothic"]'>
+          <h1>這是一個首頁還沒做好的班網</h1>
           <p className='text-5xl w-96 font-bold'>{text.first.title}</p>
           <p>{text.first.subtitle}</p>
         </div>
