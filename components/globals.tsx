@@ -3,7 +3,7 @@ export const Navs: Array<navs> = [
     { nameEn: 'Home', nameCh: '首頁', link: '/', emoji: faHouse },
     { nameEn: 'Members', nameCh: '成員', link: '/members', emoji: faPeopleLine, child: [{ name: '老師 Teachers', link: '/members/teachers' }, { name: '同學 Classmates', link: '/members/classmates' }, { name: '懿德爸媽', link: '/members/tzuyi', child: [{ name: '第一組', link: '/members/tzuyi/first' }, { name: '第二組', link: '/members/tzuyi/second' }, { name: '第三組', link: '/members/tzuyi/third' }] }] },
     { nameEn: 'Album', nameCh: '相簿', link: '/album', emoji: faCameraRetro },
-    { nameEn: 'Schedule', nameCh: '行事曆', link: '/calender', emoji: faCalendarDays },
+    { nameEn: 'Schedule', nameCh: '行事曆', link: '/calendar', emoji: faCalendarDays },
     { nameEn: 'Songs', nameCh: '歌單', link: '/songs', emoji: faMusic }
   ]
 export type navs = { nameEn: string; nameCh: string; link: string; emoji: IconDefinition; child?: Array<navsChild>; }

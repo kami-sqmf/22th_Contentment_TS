@@ -41,7 +41,7 @@ const SessionSelect = ({ className, pageSelect, setPagesSelect }) => {
   }
   return (
     <div className={`flex flex-row items-center max-w-max px-3 py-2 ring-1 ring-blue rounded-lg ${className}`}>
-      <select id="countries" onChange={(e) => changeSection(e)}>
+      <select onChange={(e) => changeSection(e)}>
         <option selected={false} value={1}>水生火熱</option>
         <option value={0}>知足靈堂</option>
       </select>
@@ -157,10 +157,10 @@ const IndexPage = ({ stuData }) => {
   return (
     <div>
       <HeadInitalize
-        title="22屆知足班"
-        description="歡迎來到高一知足班的大家庭，這裡充滿著歡樂以及笑容，但也可能充滿了黑暗。但其實最重要的還是我們大家一起經歷過，為高中生活留下美好為來吧！"
+        title="22屆知足班 - 同學"
+        description="蛤？你說你不知道我們班同學長怎樣！那你不妨來看看這個吧～應該是這麼形容的：『一坨俊男美女』呢！"
         icon="v1"
-        thumbnail="weikai.jpg" />
+        thumbnail="buddaBath.jpeg" />
       <Navbar Current="/members/classmates" />
       <BreadCrumb current="/members/classmates" className="mt-8" Right={<SessionSelect className={""} pageSelect={pageSelect} setPagesSelect={setPagesSelect} />} />
       <div className='flex flex-col justify-around md:justify-between items-center my-8 xl:mx-48 lg:mx-16 mx-4'>

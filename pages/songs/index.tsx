@@ -177,10 +177,10 @@ function SongPage() {
     return (
         <div>
             <HeadInitalize
-                title="22屆知足班"
-                description="歡迎來到高一知足班的大家庭，這裡充滿著歡樂以及笑容，但也可能充滿了黑暗。但其實最重要的還是我們大家一起經歷過，為高中生活留下美好為來吧！"
+                title="22屆知足班 - 點歌系統"
+                description="你是不是在煩惱到底要聽什麼歌？沒關係，我也幫不了你。但是你可以再想想看，要聽什麼歌，然後在這個網頁中搜尋！"
                 icon="v1"
-                thumbnail="weikai.jpg" />
+                thumbnail="song.jpg" />
             <Navbar Current="/songs" />
             <BreadCrumb current="/songs" className="mt-8"></BreadCrumb>
             <div className='mt-4 mx-8 xl:mx-48 lg:mx-16'>
