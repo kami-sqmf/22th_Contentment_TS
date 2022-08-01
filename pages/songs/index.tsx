@@ -9,7 +9,6 @@ import ytSearch from '../../utils/youtubeAPI';
 import ReactDOM from 'react-dom'
 
 const yt = new ytSearch()
-let override = 0
 
 const text = {
     form: {
@@ -37,8 +36,8 @@ async function sendSongApi(id, vid) {
             })
         })
         const resJson = await res.json() as any
-        if(resJson.operation == "success") return "success"
-        if(resJson.operation == "alert") return text.confirm[`error${resJson.data}`]
+        if (resJson.operation == "success") return "success"
+        if (resJson.operation == "alert") return text.confirm[`error${resJson.data}`]
     } catch (err) {
         return "伺服器正在維修中！請洽詢湯哥！"
     }
@@ -86,7 +85,7 @@ function Search() {
             </div>
             <div className='flex flex-row justify-items-center justify-start'>
                 <img className="h-10 m-2 rounded-full" src={avatar} />
-                <p className='font-bold text-blue mt-1'>{title}</p>
+                <p className='font-bold text-blue mt-1'>{title.replaceAll("&quot;", '"')}</p>
             </div>
             <div className="flex flex-col ml-14 text-gray-500 text-sm">
                 <p>{channel} 。 {timeSince(new Date(published))}</p>
@@ -125,6 +124,26 @@ function Search() {
     )
 }
 
+function Notification({Text}) {
+    return (
+        <div className="m-auto">
+            <div className="bg-white rounded-lg border-gray-300 border p-3 shadow-lg">
+                <div className="flex flex-row">
+                    <div className="px-2">
+                        <svg width="24" height="24" viewBox="0 0 1792 1792" fill="#44C997" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1299 813l-422 422q-19 19-45 19t-45-19l-294-294q-19-19-19-45t19-45l102-102q19-19 45-19t45 19l147 147 275-275q19-19 45-19t45 19l102 102q19 19 19 45t-19 45zm141 83q0-148-73-273t-198-198-273-73-273 73-198 198-73 273 73 273 198 198 273 73 273-73 198-198 73-273zm224 0q0 209-103 385.5t-279.5 279.5-385.5 103-385.5-103-279.5-279.5-103-385.5 103-385.5 279.5-279.5 385.5-103 385.5 103 279.5 279.5 103 385.5z" />
+                        </svg>
+                    </div>
+                    <div className="ml-2 mr-6">
+                        <span className="font-semibold">Successfully Saved!</span>
+                        <span className="block text-gray-500">Anyone with a link can now view this file</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
 function ConfirmSong({ vid }) {
     const [errorMessage, setErrorMessage] = useState(null)
     async function sendSongReqeust(e: any = false) {
@@ -135,11 +154,12 @@ function ConfirmSong({ vid }) {
         const id = (document.querySelector("#id") as any).value
         if (id.length != 6) {
             setErrorMessage(text.confirm.errorId)
-        }else{
+        } else {
             const res = await sendSongApi(id, vid)
-            if( res != "success") return setErrorMessage(res)
+            if (res != "success") return setErrorMessage(res)
+
             return ReactDOM.render(null, document.getElementById("ConfirmMenu"))
-        }       
+        }
     }
     return (
         <div className="relative z-50" aria-labelledby="modal-title" role="dialog" aria-modal="true">

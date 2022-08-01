@@ -8,7 +8,7 @@ const bot = new LineBot(
 const handler = (_req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (_req.method !== 'POST') {
-      bot.temp()
+      // bot.temp()
       res.status(404).send({ message: '請使用Line傳送資料' });
       return;
     } else {
