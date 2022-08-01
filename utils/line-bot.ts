@@ -832,133 +832,7 @@ const profileChangeFlex = (profile) => {
   )
 }
 
-const profileFlex = (profile) => {
-  return (
-    {
-      "type": "bubble",
-      "hero": {
-        "type": "image",
-        "url": profile.avatar,
-        "size": "full",
-        "action": {
-          "type": "uri",
-          "uri": profile.avatar
-        },
-        "aspectMode": "cover"
-      },
-      "body": {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [
-          {
-            "type": "box",
-            "layout": "baseline",
-            "contents": [
-              {
-                "type": "text",
-                "weight": "bold",
-                "size": "xl",
-                "text": profile.nameCh,
-                "flex": 2
-              },
-              {
-                "type": "text",
-                "color": "#aaaaaa",
-                "size": "sm",
-                "flex": 1,
-                "text": `${profile.index}號 ${profile.nameEn}`
-              }
-            ]
-          },
-          {
-            "type": "box",
-            "layout": "vertical",
-            "margin": "lg",
-            "spacing": "sm",
-            "contents": [
-              {
-                "type": "box",
-                "layout": "baseline",
-                "spacing": "sm",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "生日",
-                    "color": "#aaaaaa",
-                    "size": "sm",
-                    "flex": 2
-                  },
-                  {
-                    "type": "text",
-                    "text": `${parseInt((parseInt(profile["birth"]) % 10000 / 100).toString())} 月 ${(parseInt(profile["birth"]) % 100).toString()} 號`,
-                    "wrap": true,
-                    "color": "#666666",
-                    "size": "sm",
-                    "flex": 5
-                  }
-                ]
-              },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "spacing": "sm",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "Instagram",
-                    "color": "#aaaaaa",
-                    "size": "sm",
-                    "flex": 2
-                  },
-                  {
-                    "type": "text",
-                    "text": profile.instagram,
-                    "wrap": true,
-                    "color": "#666666",
-                    "size": "sm",
-                    "flex": 5,
-                    "action": {
-                      "type": "uri",
-                      "label": "action",
-                      "uri": `https://instagram.com/${profile.instagram}`
-                    }
-                  }
-                ]
-              },
-              {
-                "type": "box",
-                "layout": "baseline",
-                "spacing": "sm",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": "自我介紹",
-                    "color": "#aaaaaa",
-                    "size": "sm",
-                    "flex": 2
-                  },
-                  {
-                    "type": "text",
-                    "text": profile.bio ? profile.bio : "（尚未輸入）",
-                    "wrap": true,
-                    "color": "#666666",
-                    "size": "sm",
-                    "flex": 5
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-    }
-  )
-}
-
 async function changeProfile(data, type) {
-  const sendProfile = ()=>{
-
-  }
   if (type == "Main") {
     const lineRef = db.collection("line").doc(data.source.userId)
     const res = await lineRef.get()
@@ -1001,8 +875,20 @@ async function changeProfile(data, type) {
           listener.delete(data.source.userId)
           resolve([{
             "type": "text",
-            "text": `已經更改您的照片`
-          },profileFlex(profile.data())])
+            "text": `已經更改您的照片`,
+            "quickReply": {
+              "items": [
+                {
+                  "type": "action",
+                  "action": {
+                    "type": "message",
+                    "label": "點我查看更改後的資料",
+                    "text": "資料異動"
+                  }
+                },
+              ]
+            }
+          }])
         }))
         setTimeout(()=>{reject()}, 7500);
       });
@@ -1035,8 +921,20 @@ async function changeProfile(data, type) {
     listener.delete(data.source.userId)
     return [{
       "type": "text",
-      "text": `變更成功！`
-    },profileFlex(profile.data())]
+      "text": `變更成功！`,
+      "quickReply": {
+        "items": [
+          {
+            "type": "action",
+            "action": {
+              "type": "message",
+              "label": "點我查看更改後的資料",
+              "text": "資料異動"
+            }
+          },
+        ]
+      }
+    }]
   }
   else {
     listener.set(data.source.userId, {
