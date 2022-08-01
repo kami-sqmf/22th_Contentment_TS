@@ -3,7 +3,7 @@ import '@toast-ui/calendar/dist/toastui-calendar.min.css';
 import React from 'react';
 
 const CalendarComponent = () => {
-    const calendarRef = React.createRef<Calendar>();
+    const calendarRef = React.createRef<any>();
     const handleClickNextButton = () => {
         const calendarInstance = calendarRef.current.getInstance();
         calendarInstance.next();
